@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+feign:
+  client:
+    config:
+      user:
+        connect-timeout: 160000000
+        read-timeout: 160000000
+
+security:
+  secret: "SECRET"
+  refresh: 'REFRESH-SECRET'
+  session-duration-minutes: 36000
+  refresh-duration-minutes: 86400
+  allowed-origin: "http://localhost:3000"
+
+services:
+  user:
+    url: "http://localhost:8081"
+csrf:
+  xsrf_cookie_name: 'MH-XSRF'
+  xsrf_header_name: "MH-X-XSRF"
+  cookie_domain: "localhost"
